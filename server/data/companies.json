@@ -1,12 +1,12 @@
 [
   {
-    "id": "159370f3-c417-40f3-af3d-cf93e7cf1d73",
-    "name": "Facegle",
+    "id": "Google-ID",
+    "name": "Google",
     "description": "We are a startup on a mission to disrupt social search engines. Think Facebook meet Google."
   },
   {
-    "id": "e349bf8f-4d8e-4870-aab3-d7ddb1030a25",
-    "name": "Goobook",
+    "id": "Microsoft-ID",
+    "name": "Microsoft",
     "description": "We are a startup on a mission to disrupt search social media. Think Google meet Facebook."
   }
 ]

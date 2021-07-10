@@ -1,19 +1,19 @@
 [
   {
     "id": "1764fc06-cb94-4d64-8ee4-ebc3e4cdf654",
-    "companyId": "Google",
+    "companyId": "Google-ID",
     "title": "Frontend Developer",
     "description": "We are looking for a Frontend Developer familiar with React."
   },
   {
     "id": "067a760f-ff23-4790-869d-b46f6aad8d78",
-    "companyId": "Google",
+    "companyId": "Google-ID",
     "title": "Backend Developer",
     "description": "We are looking for a Backend Developer familiar with Node.js and Express."
   },
   {
     "id": "cc591562-f57b-4eab-98ff-8152b6401e41",
-    "companyId": "Microsoft",
+    "companyId": "Microsoft-ID",
     "title": "Full-Stack Developer",
     "description": "We are looking for a Full-Stack Developer familiar with Node.js, Express, and React."
   }
