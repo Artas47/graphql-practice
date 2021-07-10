@@ -1,25 +1,53 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useHistory,
+} from 'react-router-dom';
+import { isLoggedIn, logout } from './auth';
+import { CompanyDetail } from './CompanyDetail';
+import { LoginForm } from './LoginForm';
+import { JobBoard } from './JobBoard';
+import { JobDetail } from './JobDetail';
+import { JobForm } from './JobForm';
+import { NavBar } from './NavBar';
 
-function App() {
+export const App = () => {
+  const history = useHistory();
+  const [loggedIn, setLoggedIn] = useState(isLoggedIn());
+
+  const handleLogin = () => {
+    setLoggedIn(true);
+    history.push('/');
+  };
+
+  const handleLogout = () => {
+    logout();
+    setLoggedIn(false);
+    history.push('/');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <NavBar loggedIn={loggedIn} onLogout={handleLogout} />
+        <section className="section">
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={JobBoard} />
+              <Route path="/companies/:companyId" component={CompanyDetail} />
+              <Route exact path="/jobs/new" component={JobForm} />
+              <Route path="/jobs/:jobId" component={JobDetail} />
+              <Route
+                exact
+                path="/login"
+                render={() => <LoginForm onLogin={handleLogin} />}
+              />
+            </Switch>
+          </div>
+        </section>
+      </div>
+    </Router>
   );
-}
-
-export default App;
+};
