@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { JobList } from './JobList';
-const { jobs } = require('./fake-data');
-
+import { loadJobs } from './requests';
 export const JobBoard = () => {
+  const [jobs, setJobs] = useState();
+  useEffect(() => {
+    const getJobs = async () => {
+      const jobs = await loadJobs();
+      setJobs(jobs);
+    };
+    getJobs();
+  }, []);
   return (
     <div>
       <h1 className="title">Job Board</h1>
