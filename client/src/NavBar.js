@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export const NavBar = ({ loggedIn, onLogout }) => {
+  const history = useHistory();
   if (loggedIn) {
     return (
       <nav className="navbar">
@@ -13,7 +14,7 @@ export const NavBar = ({ loggedIn, onLogout }) => {
             Post Job
           </Link>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a className="navbar-item" onClick={onLogout}>
+          <a className="navbar-item" onClick={() => onLogout(history)}>
             Logout
           </a>
         </div>

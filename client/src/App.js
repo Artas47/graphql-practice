@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useHistory,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { isLoggedIn, logout } from './auth';
 import { CompanyDetail } from './CompanyDetail';
 import { LoginForm } from './LoginForm';
@@ -14,15 +9,14 @@ import { JobForm } from './JobForm';
 import { NavBar } from './NavBar';
 
 export const App = () => {
-  const history = useHistory();
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
 
-  const handleLogin = () => {
+  const handleLogin = (history) => {
     setLoggedIn(true);
     history.push('/');
   };
 
-  const handleLogout = () => {
+  const handleLogout = (history) => {
     logout();
     setLoggedIn(false);
     history.push('/');

@@ -8,12 +8,12 @@ export const JobForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setJobFormState({ [name]: value });
+    setJobFormState((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleClick = (event) => {
     event.preventDefault();
-    console.log('should post a new job:', this.state);
+    console.log('should post a new job:', jobFromState);
   };
 
   return (

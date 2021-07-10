@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { login } from './auth';
+import { useHistory } from 'react-router';
 
 export const LoginForm = ({ onLogin }) => {
+  const history = useHistory();
   const [formState, setFormState] = useState({
     email: '',
     password: '',
@@ -10,7 +12,7 @@ export const LoginForm = ({ onLogin }) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormState({ [name]: value });
+    setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleClick = (event) => {
@@ -18,7 +20,7 @@ export const LoginForm = ({ onLogin }) => {
     const { email, password } = formState;
     login(email, password).then((ok) => {
       if (ok) {
-        onLogin();
+        onLogin(history);
       } else {
         setFormState({ error: true });
       }
