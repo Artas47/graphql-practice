@@ -16,5 +16,11 @@
     "companyId": "Microsoft-ID",
     "title": "Full-Stack Developer",
     "description": "We are looking for a Full-Stack Developer familiar with Node.js, Express, and React."
+  },
+  {
+    "id": "S1PLZdv6u",
+    "companyId": "Microsoft-ID",
+    "title": "DevOps Engineer",
+    "description": "Setting up CI/CD pipelines"
   }
 ]
