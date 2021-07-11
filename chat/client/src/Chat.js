@@ -12,7 +12,7 @@ const Chat = ({ user }) => {
       const messages = await getMessages();
       setMessages(messages);
       subscription = onMessageAdded((message) => {
-        setMessages(messages.concat(message));
+        setMessages((prev) => [...prev, message]);
       });
     };
     fetchMessages();

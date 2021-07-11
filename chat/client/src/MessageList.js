@@ -5,9 +5,9 @@ const MessageList = ({ user, messages }) => {
 
   useEffect(() => {
     if (boxRef?.current) {
-      boxRef.current.scrollTo(0, boxRef.scrollHeight);
+      boxRef.current.scrollTo(0, boxRef.current.scrollHeight);
     }
-  }, [boxRef]);
+  }, [boxRef, messages]);
 
   const renderMessage = (message) => {
     let tag = 'tag';
