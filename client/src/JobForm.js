@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { createJob } from './requests';
+import { useHistory } from 'react-router';
 
 export const JobForm = () => {
+  const history = useHistory();
   const [jobFromState, setJobFormState] = useState({
     title: '',
     description: '',
@@ -13,6 +16,11 @@ export const JobForm = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
+    const companyId = 'Google-ID';
+    const { title, description } = jobFromState;
+    createJob({ companyId, title, description }).then((job) => {
+      history.push(`/jobs/${job.id}`);
+    });
     console.log('should post a new job:', jobFromState);
   };
 

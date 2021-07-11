@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { companies } from './fake-data';
 import { loadCompany } from './requests';
 import { useParams } from 'react-router';
 import { JobList } from './JobList';
@@ -14,7 +13,7 @@ export const CompanyDetail = () => {
       setCompany(response);
     };
     getCompany();
-  }, []);
+  }, [companyId]);
 
   if (!company) {
     return null;

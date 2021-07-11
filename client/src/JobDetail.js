@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { jobs } from './fake-data';
 import { loadJob } from './requests';
 
 export const JobDetail = () => {
@@ -12,7 +11,7 @@ export const JobDetail = () => {
       setJob(response);
     };
     getJob();
-  }, []);
+  }, [jobId]);
 
   if (!job) {
     return null;
