@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { addMessage, getMessages, onMessageAdded } from './graphql/queries';
+import React, { useState } from 'react';
+import {
+  messagesQuery,
+  addMessageMutation,
+  messageAddedSubscription,
+} from './graphql/queries';
 import MessageInput from './MessageInput';
 import MessageList from './MessageList';
+import { useQuery, useMutation, useSubscription } from '@apollo/client';
 
 const Chat = ({ user }) => {
   const [messages, setMessages] = useState([]);
-
-  useEffect(() => {
-    let subscription = null;
-    const fetchMessages = async () => {
-      const messages = await getMessages();
-      setMessages(messages);
-      subscription = onMessageAdded((message) => {
-        setMessages((prev) => [...prev, message]);
-      });
-    };
-    fetchMessages();
-
-    return () => {
-      if (subscription) {
-        subscription = null;
-      }
-    };
-  }, []);
+  useQuery(messagesQuery, {
+    onCompleted: ({ messages }) => setMessages(messages),
+  });
+  useSubscription(messageAddedSubscription, {
+    onSubscriptionData: ({
+      subscriptionData: {
+        data: { messageAdded },
+      },
+    }) => {
+      setMessages((prev) => [...prev, messageAdded]);
+    },
+  });
+  const [addMessage] = useMutation(addMessageMutation);
 
   const handleSend = async (text) => {
-    await addMessage(text);
+    await addMessage({ variables: { input: { text } } });
   };
 
   return (
