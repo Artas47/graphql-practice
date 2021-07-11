@@ -3,12 +3,12 @@
     "id": "dc4e24a1-7a09-4f24-b921-3595f96d724c",
     "email": "peter@o2.pl",
     "password": "peter1",
-    "companyId": "Google"
+    "companyId": "Google-ID"
   },
   {
     "id": "be26637a-3df2-48e1-9aff-5bb715ca89e6",
     "email": "mark@o2.pl",
     "password": "mark123",
-    "companyId": "Microsoft"
+    "companyId": "Microsoft-ID"
   }
 ]

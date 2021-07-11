@@ -16,9 +16,8 @@ export const JobForm = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    const companyId = 'Google-ID';
     const { title, description } = jobFromState;
-    createJob({ companyId, title, description }).then((job) => {
+    createJob({ title, description }).then((job) => {
       history.push(`/jobs/${job.id}`);
     });
     console.log('should post a new job:', jobFromState);
